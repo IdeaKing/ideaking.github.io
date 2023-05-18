@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include header.html %}
+    <body>
+        {% include nav.html %}
+        <!-- Make a header with an image. from /images/intro.jpg -->
+        <!-- Center all of the header.-->
+        <header>
+            <h1> {{ site.intro }} </h1>
+            <p> {{ site.description }} </p>
+        </header>
+
+        <section id="research " class="main style1 dark fullscreen">
+            <div class="research">
+                <header>
+                    <h2>Research</h2>
+                </header>
+                <h3><b>A quick overview of the research that I have conducted.</b></h3>
+                <footer>
+                    <a href="#research-list" class="button style2 down">More</a>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Content. -->
+        <section id="research-list">
+            <div class="research-list">
+                {{ content }}
+            </div>
+        </section>
+
+        <!-- Footer. -->
+        {% include footer.html %}
+        {% include scripts.html %}
+
+    </body>
+</html>
+
