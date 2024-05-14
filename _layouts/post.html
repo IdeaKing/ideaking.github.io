@@ -1,38 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% include header.html %}
-    <body>
-        {% include nav.html %}
-        <!-- Make a header with an image. from /images/intro.jpg -->
-        <!-- Center all of the header.-->
-        <header>
-            <h1> {{ site.intro }} </h1>
-            <p> {{ site.description }} </p>
-        </header>
+---
+layout: default
+---
+<style>
+    .post-header {
+        position: relative;
+        text-align: center;
+        height: 100vh; /* Full viewport height */
+        background-image: url('{{ page.preview_image }}');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
 
-        <section id="research " class="main style1 dark fullscreen">
-            <div class="research">
-                <header>
-                    <h2>Research</h2>
+    .post-title {
+        position: absolute;
+        top: 50%; /* Center vertically */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the title exactly in the middle */
+        width: 100%;
+        color: #FFF; /* Ensures the title is white */
+        font-size: 4em; /* Increased font size */
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8); /* Adds a shadow for better visibility */
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0; /* Start invisible */
+        z-index: 2; /* Ensures it's above the overlay */
+    }
+
+    .dark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        z-index: 1;
+    }
+    .post-meta {
+        font-style: italic; /* Adds italic styling to the text */
+        text-align: left; /* Aligns the text to the left */
+        color: gray;
+    }
+</style>
+
+<section class="py-5">
+    <div class="container px-5 mb-5">
+        <article class="post">
+            <div class="glowing-background">
+                <header class="post-header">
+                    <div class="dark-overlay"></div>
+                    <h1 class="post-title" id="postTitle">{{ page.title }}</h1>
                 </header>
-                <h3><b>A quick overview of the research that I have conducted.</b></h3>
-                <footer>
-                    <a href="#research-list" class="button style2 down">More</a>
-                </footer>
-            </div>
-        </section>
+                <p class="post-meta">Posted on {{ page.date | date: "%B %d, %Y" }} in {{ page.categories }}</p>
+                <section class="post-content">
+                    {{ content }}
+                </section>
+            </article>
+        </div>
+    </div>
+</section>
 
-        <!-- Content. -->
-        <section id="research-list">
-            <div class="research-list">
-                {{ content }}
-            </div>
-        </section>
-
-        <!-- Footer. -->
-        {% include footer.html %}
-        {% include scripts.html %}
-
-    </body>
-</html>
+<script>
+    document.addEventListener('scroll', function() {
+        var title = document.getElementById('postTitle');
+        var scrollPosition = window.scrollY;
+        var windowHeight = window.innerHeight;  // Get the viewport height
+        var opacity = 1 - (scrollPosition / (windowHeight * 1.8));  // Slower fade: adjust based on viewport height
+        title.style.opacity = Math.max(opacity, 0); // Ensure opacity doesn't drop below 0
+    });
+</script>
 

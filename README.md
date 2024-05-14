@@ -1,1 +1,0 @@
-# IdeaKing.github.io

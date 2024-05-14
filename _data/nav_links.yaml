@@ -1,0 +1,7 @@
+links:
+  - name: "Home"
+    href: "/index.html"
+  - name: "Resume"
+    href: "/resume.html" 
+  - name: "Projects"
+    href: "/projects.html"

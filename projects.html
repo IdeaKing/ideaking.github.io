@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<style>
+    .image-center {
+        display: block; /* Ensures the image is treated as a block-level element, enabling centering with margin */
+        max-width: 300px; /* Limits the image to the width of its container */
+        max-height: 400px; /* Limits the height of the image for uniformity */
+        width: auto; /* Maintains the original aspect ratio of the image */
+        height: auto; /* Maintains the original aspect ratio of the image */
+        margin: auto; /* Centers the image horizontally within its container */
+    }
+
+    .excerpt {
+        font-size: 1.25rem; /* Increases the font size */
+        /* max lines */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* Limit the number of lines displayed */
+        -webkit-box-orient: vertical;
+    
+    }
+</style>
+
+<section class="py-5">
+    <div class="container px-5 mb-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-11 col-xl-9 col-xxl-8">
+                {% for post in site.posts %}
+                    <!-- Link the entire card -->
+                    <a href="{{ post.url }}" class="text-decoration-none text-dark">
+                        <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5">
+                                        <h2 class="fw-bolder">{{ post.title }}</h2>
+                                        <p>{{ post.excerpt }}</p>
+                                    </div>
+                                    <img class="image-center" src="{{ post.main_image }}" alt="{{ post.title }}" />
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
