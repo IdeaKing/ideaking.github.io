@@ -1,0 +1,61 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<section class="relative py-20 md:py-32 overflow-hidden">
+    <!-- Background Image and Overlay -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://www.virginia.edu/assets/images/inline/201904-sunset.jpg');"></div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm image-blend-overlay"></div> <!-- Dark overlay with gradient mask -->
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">All Projects</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">A collection of my work spanning AI/ML, systems engineering, and web development.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+            {% for project in sorted_projects %}
+            <a href="{{ project.url | relative_url }}" class="project-card group block glass-card rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 scroll-reveal delay-{{ forloop.index | modulo: 3 }}">
+                <div class="overflow-hidden">
+                    <img src="{{ project.preview_image | relative_url }}" 
+                         alt="{{ project.title }}" 
+                         class="project-image w-full h-48 object-cover transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">{{ project.title }}</h3>
+                    <p class="text-slate-400 mb-4">{{ project.description }}</p>
+                    
+                    {% if project.technologies %}
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tech in project.technologies limit:3 %}
+                        <span class="bg-indigo-600/20 text-indigo-300 px-2 py-1 rounded text-xs">{{ tech }}</span>
+                        {% endfor %}
+                        {% if project.technologies.size > 3 %}
+                        <span class="text-slate-500 text-xs">+{{ project.technologies.size | minus: 3 }} more</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="flex items-center text-indigo-400 font-semibold">
+                        View Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon ml-1 transition-transform duration-300">
+                            <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        
+        {% if site.projects.size == 0 %}
+        <div class="text-center py-12">
+            <p class="text-slate-400 text-lg">No projects found. Check back soon!</p>
+        </div>
+        {% endif %}
+    </div>
+</section> 

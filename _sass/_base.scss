@@ -1,0 +1,68 @@
+// Base styles for the portfolio
+body {
+    font-family: $font-family;
+    background-color: $primary-bg;
+    color: $primary-text;
+}
+
+// Typography styles for prose content
+.prose {
+    h1, h2, h3, h4, h5, h6 {
+        color: $white;
+    }
+
+    p {
+        color: $secondary-text;
+    }
+
+    code {
+        background-color: $slate-800;
+        color: $primary-text;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+    }
+
+    pre {
+        background-color: $slate-800;
+        border: 1px solid $slate-700;
+
+        code {
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+
+    blockquote {
+        border-left-color: $indigo-500;
+        color: $muted-text;
+    }
+
+    a {
+        color: $indigo-400;
+        text-decoration: none;
+
+        &:hover {
+            color: lighten($indigo-400, 10%);
+            text-decoration: underline;
+        }
+    }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $slate-600;
+    border-radius: 4px;
+
+    &:hover {
+        background: $slate-500;
+    }
+} 

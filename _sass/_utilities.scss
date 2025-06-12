@@ -1,0 +1,83 @@
+// Custom utility classes
+.bg-gradient-radial {
+    background: radial-gradient(
+        circle at center, 
+        rgba($indigo-600, 0.1) 0%, 
+        transparent 50%
+    );
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, $white 0%, $secondary-text 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Print styles
+@media print {
+    .gradient-bg,
+    .gradient-blob {
+        display: none;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .bg-slate-900,
+    .bg-black {
+        background-color: white !important;
+        border: 1px solid #ccc;
+    }
+    
+    .text-white,
+    .text-slate-300 {
+        color: black !important;
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .gradient-blob {
+        display: none;
+    }
+    
+    .project-card {
+        border-width: 2px;
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .gradient-blob,
+    .project-image,
+    .arrow-icon {
+        transition: none;
+    }
+    
+    .fade-in-up {
+        animation: none;
+    }
+}
+
+// Scroll-reveal animations
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+// Staggered animation delays
+@for $i from 1 through 10 {
+    .delay-#{$i} {
+        transition-delay: #{$i * 100}ms;
+    }
+} 

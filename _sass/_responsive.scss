@@ -1,0 +1,45 @@
+// Mobile-specific adjustments
+@media (max-width: 768px) {
+    .gradient-blob {
+        width: $blob-size-mobile;
+        height: $blob-size-mobile;
+    }
+    
+    // Adjust section padding for mobile
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    .py-32 {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+// Tablet adjustments
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gradient-blob {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+// Large screen optimizations
+@media (min-width: 1440px) {
+    .gradient-blob {
+        width: 800px;
+        height: 800px;
+    }
+}
+
+// Dark mode support (if system preference)
+@media (prefers-color-scheme: dark) {
+    // Already using dark theme, but can add specific adjustments here if needed
+}
+
+// Light mode fallback (future enhancement)
+@media (prefers-color-scheme: light) {
+    // Future light mode styles would go here
+    // Currently maintaining dark theme as the primary design
+} 

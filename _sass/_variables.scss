@@ -1,0 +1,39 @@
+// Color palette
+$primary-bg: #0A0A0A;
+$primary-text: #E2E8F0;
+$secondary-text: #CBD5E1;
+$muted-text: #94A3B8;
+
+// Brand colors
+$indigo-400: #818CF8;
+$indigo-500: #6366F1;
+$indigo-600: rgb(79, 70, 229);
+
+// Surface colors
+$slate-800: #1E293B;
+$slate-700: #334155;
+$slate-600: #475569;
+$slate-500: #64748B;
+$white: #F8FAFC;
+
+// Gradient blob
+$blob-color: rgba(79, 70, 229, 0.4);
+$blob-size: 600px;
+$blob-size-mobile: 400px;
+
+// Typography
+$font-family: 'Inter', sans-serif;
+
+// Spacing
+$header-height: 6rem; // pt-24 equivalent
+$section-padding: 5rem; // py-20
+$section-padding-large: 8rem; // py-32
+
+// Transitions
+$transition-smooth: 0.5s ease-out;
+$transition-fast: 0.3s ease;
+
+// Z-index
+$z-background: -1;
+$z-content: 10;
+$z-header: 50; 

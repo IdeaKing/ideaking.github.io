@@ -1,0 +1,45 @@
+<script>
+    // JavaScript for mobile menu toggle
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // JavaScript for animated gradient background
+    const blob1 = document.getElementById('blob1');
+    const blob2 = document.getElementById('blob2');
+    
+    // Move gradient with pointer
+    window.addEventListener('pointermove', (event) => {
+        const { clientX, clientY } = event;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const xPercent = clientX / width;
+        const yPercent = clientY / height;
+        
+        requestAnimationFrame(() => {
+            blob1.style.transform = `translate(${xPercent * 100 - 150}px, ${yPercent * 100 - 150}px)`;
+            blob2.style.transform = `translate(${ (1 - xPercent) * 100 + 50}px, ${(1 - yPercent) * 100 + 50}px)`;
+        });
+    });
+
+    // Scroll reveal animation
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        scrollObserver.observe(el);
+    });
+</script> 

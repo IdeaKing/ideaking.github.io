@@ -1,0 +1,92 @@
+---
+layout: default
+---
+
+<!-- Hero Section -->
+<section id="home" class="relative text-center py-24 md:py-40 px-6">
+     <div class="relative z-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
+            {{ site.author.name }}
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300">
+            {{ site.description }}
+        </p>
+        <div class="mt-8 flex justify-center gap-4">
+            <a href="#projects" class="bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-slate-200 transition-all duration-300">
+                View My Work
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 md:py-32">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24 scroll-reveal">
+            <!-- Image -->
+            <div class="w-full md:w-2/5">
+                <img src="{{ 'assets/img/thomas-portrait.jpg' | relative_url }}" alt="Thomas Chia Portrait" class="rounded-2xl shadow-2xl w-full">
+            </div>
+            <!-- Text Content -->
+            <div class="w-full md:w-3/5 text-center md:text-left">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-indigo-400">About Me</h2>
+                <p class="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">From Medicine to Machines: A Developer's Journey</p>
+                <p class="mt-6 text-lg text-slate-300">
+                    I'm a builder at heart, driven by a passion for solving complex problems at the intersection of technology and human health. Originally on a pre-med track, I discovered my love for the logic and creativity of software development. Today, as a Systems Engineering Master's student at UVA, I'm developing AI-driven solutions for clinical trial automation and creating novel medical devices.
+                </p>
+                <p class="mt-4 text-lg text-slate-300">
+                    My goal is to leverage technology to build systems that are not only intelligent but also intuitive and impactful.
+                </p>
+                 <div class="mt-8 flex justify-center md:justify-start gap-4">
+                    <a href="{{ '/resume' | relative_url }}" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                        View My Resume
+                    </a>
+                    <a href="#projects" class="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                        See My Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="relative py-20 md:py-32 overflow-hidden">
+     <!-- Background Image and Overlay -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://www.virginia.edu/assets/images/inline/201904-sunset.jpg');"></div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm image-blend-overlay"></div> <!-- Dark overlay with gradient mask -->
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 scroll-reveal">
+             <h2 class="text-sm font-bold uppercase tracking-widest text-indigo-400">Portfolio</h2>
+            <p class="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">Selected Projects</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+            {% for project in sorted_projects limit:4 %}
+            <a href="{{ project.url | relative_url }}" class="project-card group block glass-card rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 scroll-reveal delay-{{ forloop.index }}">
+                <div class="overflow-hidden">
+                     <img src="{{ project.preview_image | relative_url }}" alt="{{ project.title }}" class="project-image w-full h-48 object-cover transition-transform duration-300">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white">{{ project.title }}</h3>
+                    <p class="mt-2 text-slate-400">{{ project.description }}</p>
+                    <div class="mt-4 flex items-center text-indigo-400 font-semibold">
+                        View Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon lucide lucide-arrow-up-right ml-1 transition-transform duration-300"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12 scroll-reveal">
+            <a href="{{ '/projects' | relative_url }}" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                View All Projects
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<!-- Header / Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 glass-card">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="{{ '/' | relative_url }}" class="text-xl font-bold tracking-tighter text-white">{{ site.author.name }}</a>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="{{ '/' | relative_url }}#about" class="text-slate-300 hover:text-white transition-colors duration-300">About</a>
+            <a href="{{ '/projects' | relative_url }}" class="text-slate-300 hover:text-white transition-colors duration-300">Projects</a>
+            <a href="{{ '/resume' | relative_url }}" class="text-slate-300 hover:text-white transition-colors duration-300">Resume</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 glass-card">
+         <a href="{{ '/' | relative_url }}#about" class="block py-2 text-slate-300 hover:text-white">About</a>
+         <a href="{{ '/projects' | relative_url }}" class="block py-2 text-slate-300 hover:text-white">Projects</a>
+         <a href="{{ '/resume' | relative_url }}" class="block py-2 text-slate-300 hover:text-white">Resume</a>
+    </div>
+</header> 

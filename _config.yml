@@ -1,0 +1,57 @@
+# Site settings
+title: Thomas Chia | Portfolio
+email: tkchia@virginia.edu
+description: >-
+  An UVA student researching clinical trial-matching language models at the Cancer Center.
+baseurl: ""
+url: "https://ideaking.github.io" # Update with your actual GitHub Pages URL
+
+# Author settings
+author:
+  name: Thomas Chia
+  github: IdeaKing
+  linkedin: thomaskchia
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+sass:
+  style: compressed
+  sass_dir: _sass
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project" 

@@ -1,0 +1,78 @@
+// Project card hover effects
+.project-card {
+    .project-image {
+        transition: transform $transition-fast;
+    }
+
+    .arrow-icon {
+        transition: transform $transition-fast;
+    }
+
+    &:hover {
+        .project-image {
+            transform: scale(1.05);
+        }
+
+        .arrow-icon {
+            transform: translateX(4px) translateY(-4px);
+        }
+    }
+}
+
+// Animated gradient background
+.gradient-bg {
+    position: fixed; // Changed to fixed to cover the viewport
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: $z-background; // Place it behind the content
+}
+
+.gradient-blob {
+    position: absolute;
+    width: $blob-size;
+    height: $blob-size;
+    background: $blob-color; // Indigo color
+    border-radius: 50%;
+    filter: blur(150px);
+    will-change: transform;
+    transition: transform 1s ease-out; // Smoothed transition
+}
+
+// Glassmorphism Classes
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Gradient mask for smooth image blending
+.image-blend-overlay {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+// Focus states for accessibility
+.focus\:ring-indigo:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($indigo-600, 0.5);
+}
+
+// Loading animations
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+} 
